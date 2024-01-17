@@ -15,7 +15,7 @@ interface NewsResponse {
   articles: Article[];
 }
 
-function HomeScreen({navigation}: {navigation: any}) {
+function HomeScreen({navigation}: {navigation: string}) {
   const [data, setData] = useState<NewsResponse>({articles: []});
   const key = '84732764929840849457bbdc501797eb';
 

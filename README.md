@@ -1,79 +1,100 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## APP NEWS
+Esta aplicacion se trata de obtener datos de una API de Noticias, la cual en la primera screen se obtienen los articulos mas populares, en los articulos trae la imagen, titulo, descripcion y un boton el cual te lleva a ver mas detalle del mismo, en la screen de detalle se ve mas completo el articulo, el nombre completo y la decripcion completa.
 
-# Getting Started
+## Características
+- Se puede ver los arcticulos mas populares
+- Le puede dar click a ver mas para ver mas a detalle cada articulo
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Comenzando
+En el repositorio de GitHub podras clonar el proyecto para que lo puedas probar y ver mas a detalle la aplicacion
 
-## Step 1: Start the Metro Server
+## Prerrequisitos
+Se necesita tener instalado React-Native CLI, Node Js arriba de la version 18
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Instrucciones al clonar el proyecto
+Primero abre la consola con CTRL + J, pon el comando: npm install para instalar todas las dependencias, para ejecutar el proyecto tendras que poner el comando: npm start, te aparecera con que lo ejecutaras, oprimiras la tecla: a, y se ejecutara la app
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Lo que se realizo en cada screen de la aplicacion 
+# HomeScreen Component Documentation
 
-```bash
-# using npm
-npm start
+El componente `HomeScreen` es la screnn principal para la visualización de la aplicación. Este componente se encarga de mandar a llamar la API y mostrar la lista de artículos de noticias.
 
-# OR using Yarn
-yarn start
-```
+El componente realiza lo siguiente:
 
-## Step 2: Start your Application
+- Inicializa un estado local para almacenar los datos de las noticias.
+- Usa `axios` para obtener datos de la API de noticias.
+- Renderiza una lista de componentes `Card` para cada artículo de la respuesta de la API.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Estado y Interfaces
 
-### For Android
+- `useState` se usa para inicializar el estado `data` con un objeto vacío.
+- Se definen dos interfaces, `Article` y `NewsResponse`, para tipar la estructura de los datos recibidos de la API.
 
-```bash
-# using npm
-npm run android
+### Obtención de Datos
 
-# OR using Yarn
-yarn android
-```
+- `getData` es una función asíncrona que usa `axios` para hacer una solicitud GET a la API de noticias.
+- Utiliza un efecto (`useEffect`) para llamar a `getData` justo después de que el componente se ejecute.
 
-### For iOS
+### Renderizado de Lista
 
-```bash
-# using npm
-npm run ios
+- El componente `ScrollView` se utiliza para permitir el desplazamiento si la lista de artículos sobre pasa el tamaño de la pantalla.
+- Se utiliza el método `map` para iterar sobre los artículos del estado `data` y renderizar un componente `Card` para cada uno.
 
-# OR using Yarn
-yarn ios
-```
+### Card Component Documentation
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+El componente `Card` es un componente utilizado para mostrar la información de un artículo de noticias en un formato de card.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Funcionalidad
 
-## Step 3: Modifying your App
+El componente `Card` es responsable de:
 
-Now that you have successfully run the app, let's modify it.
+- Mostrar la imagen del artículo, si está disponible.
+- Presentar el título y la descripción del artículo.
+- Proporcionar un botón que, al ser presionado, te lleva a la screen de detalles.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Detalles de Implementación
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+### Props
 
-## Congratulations! :tada:
+El componente recibe las siguientes props:
 
-You've successfully run and modified your React Native App. :partying_face:
+- `item`: Un objeto que contiene los detalles del artículo, como el título, la descripción, la imagen y la URL.
+- `navigation`: que viene de la navegación de la aplicación, se utiliza para que te lleve a la screen de detalle del articulo.
 
-### Now what?
+### Función `truncateText`
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+- `truncateText` es una función que recorta el texto a un límite agregado y pone puntos suspensivos al final del texto si sobre pasa ese límite.
+- Se utiliza para asegurarse de que el título y la descripción no se sobre pasen y no se vea tan grande la card.
 
-# Troubleshooting
+# DetailScreen Component Documentation
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+El componente `DetailScreen` es una pantalla dedicada a mostrar los detalles completos de un artículo de noticias al que le diste click ver mas.
 
-# Learn More
+## Funcionalidad
 
-To learn more about React Native, take a look at the following resources:
+El `DetailScreen` muestra:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- Una imagen representativa del artículo.
+- El título completo del artículo.
+- La descripción completa del artículo.
+
+## Props
+
+El componente recibe las siguientes props:
+
+- `route`: Un objeto que contiene los siguientes datos que le pasamos por props a esta screen: `urlToImage`, `title` y `description` del artículo.
+
+## Renderizado
+
+El componente renderiza:
+
+- Un `Image` dentro de un `View` que actúa como `imageContainer` al cual le damos estilos.
+- Dos componentes `Text` que muestran el título y la descripción del artículo.
+
+### Desarrollado con
+React Native - El framework usado
+Axios - Cliente HTTP utilizado
+Otros
+
+### Autor
+Axel David Tellez Alvarez

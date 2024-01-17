@@ -38,8 +38,8 @@ function HomeScreen({navigation}: {navigation: any}) {
     <ScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}>
-      {data.articles.map(item => (
-        <Card navigation={navigation} item={item} index={item.title} />
+      {data.articles.map((item, index) => (
+        <Card navigation={navigation} item={item} key={`article-${index}`}  />
       ))}
     </ScrollView>
   );

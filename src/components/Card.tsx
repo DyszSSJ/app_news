@@ -6,7 +6,6 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 interface CardProps {
   navigation: any;
   item: any;
-  index: string;
 }
 
 const Card = ({item, navigation}: CardProps) => {

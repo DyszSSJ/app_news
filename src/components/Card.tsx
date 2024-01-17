@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 100,
-    height: 100,
+    height: 115,
     borderRadius: 10,
   },
   textContainer: {
@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#5c6cff',
     padding: 5,
     borderRadius: 10,
+    alignSelf: 'flex-end',
   },
   buttonText: {
     color: '#fff',
